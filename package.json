@@ -1,28 +1,19 @@
 {
-    "name": "express-cors-proxy",
-    "version": "1.0.0",
-    "description": "A simple CORS proxy build on Express.",
-    "main": "app.js",
-    "scripts": {
-        "start": "node app.js",
-        "dev": "nodemon app.js"
-    },
-    "dependencies": {
-        "debug": "~2.6.9",
-        "dotenv": "^8.2.0",
-        "express": "~4.16.1",
-        "http-errors": "~1.6.3",
-        "morgan": "~1.9.1",
-        "node-fetch": "^2.6.1"
-    },
-    "keywords": [
-        "node",
-        "express",
-        "cors"
-    ],
-    "author": "Sean R Reid, sean@torchcodelab.com",
-    "license": "ISC",
-    "devDependencies": {
-        "nodemon": "^2.0.7"
-    }
+  "name": "proxy_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^2.0.1"
+  },
+  "scripts": {
+    "start": "node main.js"
+  },
+  "keywords": ["express proxy server", "protect cookies", "CORS bypass"],
+  "author": "Airat Ahunov",
+  "license": "ISC"
 }

@@ -1,8 +1,5 @@
-# Express CORS Proxy
+# Proxy server to bypass CORS and protect browser cookies
 
-## Simple Express CORS Proxy
-
-* Passes the necessary headers that CORS requires.
-* Send a url as a query parameter to `/proxy`
-  * i.e. `http://localhost:3000/proxy?url=https://somesitewithcors.com/`
-* It wraps a response in a `try / catch` to return a JSON object, or a 500 error.
+- before starting, write the **npm install** command (must be installed on the node v.14 or later)
+- set the required url-address of the site to which the redirection occurs in the _config.json_ file
+- use command **npm start** for start proxy server
