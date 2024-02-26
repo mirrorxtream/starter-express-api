@@ -1,8 +1,11 @@
-# Express CORS Proxy
+# starter-express-api
 
-## Simple Express CORS Proxy
+This is the simplest possible nodejs api using express that responds to any request with: 
+```
+Yo!
+```
 
-* Passes the necessary headers that CORS requires.
-* Send a url as a query parameter to `/proxy`
-  * i.e. `http://localhost:3000/proxy?url=https://somesitewithcors.com/`
-* It wraps a response in a `try / catch` to return a JSON object, or a 500 error.
+### Deploy it in 7 seconds: 
+
+[![Deploy to Cyclic](https://deploy.cyclic.app/button.svg)](https://deploy.cyclic.app/)
+
