@@ -1,24 +1,34 @@
 const express = require('express');
-const cors = require('cors');
-const proxy = require('http-proxy-middleware');
-
 const app = express();
+const PORT = process.env.PORT || 3000;
 
-const port = process.env.PORT || 3000;
-
-const onProxyReq = function (proxyReq, req, res) {
-  proxyReq.setHeader('Authorization', 'Basic SECRET');
-};
-
-const apiProxy = proxy('**', {
-    target: 'https://west.biz.id',
-    changeOrigin: true, // for vhosted sites
-    onProxyReq: onProxyReq
+// Middleware to enable CORS
+app.use((req, res, next) => {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
 });
 
-app.use(cors());
-app.use(apiProxy);
+app.get('/', (req, res) => {
+  res.send('Welcome to the CORS Proxy Server!');
+});
 
-app.listen(port, function() {
-	console.log('Proxy app is running on http://localhost:' + port);
+// Forward all other requests to the target API
+app.all('*', (req, res) => {
+  const targetUrl = 'https://west.biz.id' + req.url;
+
+  req.pipe(
+    request(targetUrl)
+      .on('response', (res) => {
+        res.pipe(res);
+      })
+      .on('error', (err) => {
+        res.status(500).send(err);
+      })
+  );
+});
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
