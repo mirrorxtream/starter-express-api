@@ -1,9 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express'),
+    router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async (req, res) => {
+    const message = `Welcome to the Express CORS Proxy \n
+        Send a url as a query parameter through this proxy to pass CORS checks\n
+        i.e. http://localhost:3000/?url=https://somesitewithcors.com/
+    `;
+    res.send(message);
 });
 
 module.exports = router;
